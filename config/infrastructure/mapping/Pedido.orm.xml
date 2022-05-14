@@ -1,0 +1,17 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Domain\Entity\Pedido" table="pedido">
+        <id name="id" type="integer">
+            <generator strategy="IDENTITY"/>
+        </id>
+
+        <field name="statusPedido" type="string" column="status_pedido"/>
+        <field name="dataCriacao" type="datetime" column="data_criacao"/>
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="setDataCriacao"/>
+        </lifecycle-callbacks>
+
+        <one-to-one field="cliente" target-entity="App\Domain\Entity\Cliente" mapped-by="pedido"/>
+        <one-to-many field="produtos" target-entity="App\Domain\Entity\Produto" mapped-by="pedido"/>
+    </entity>
+</doctrine-mapping>

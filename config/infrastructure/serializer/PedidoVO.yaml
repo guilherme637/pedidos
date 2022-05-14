@@ -1,0 +1,13 @@
+App\VO\PedidoVO:
+  exclusion_policy: ALL
+    properties:
+      id:
+        type: integer
+      cliente:
+        type: App\VO\ClienteVO
+      dataCriacao:
+        type: string
+      statusCriacao:
+        type: string
+      produtos:
+        type: App\VO\ProdutoVO

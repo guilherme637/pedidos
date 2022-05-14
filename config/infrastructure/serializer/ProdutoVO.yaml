@@ -1,0 +1,11 @@
+App\VO\ProdutoVO:
+  exclusion_policy: ALL
+    properties:
+      id:
+        type: integer
+      nome:
+        type: string
+      preco:
+        type: float
+      pedido:
+        type: App\VO\Pedido

@@ -1,0 +1,14 @@
+App\VO\PedidoVO:
+  properties:
+    cliente:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type: App\VO\ClienteVO
+    statusPedido:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type: string
+    produtos:
+      - NotNull: ~
+      - NotBlank: ~
+      - Type: Doctrine\Common\Collections\ArrayCollection

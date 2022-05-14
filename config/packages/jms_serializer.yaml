@@ -1,0 +1,22 @@
+jms_serializer:
+  property_naming:
+    id: 'jms_serializer.identical_property_naming_strategy'
+
+  visitors:
+    xml_serialization:
+      format_output: '%kernel.debug%'
+  default_context:
+    serialization:
+      serialize_null: true
+
+  object_constructors:
+    doctrine:
+      fallback_strategy: "fallback"
+
+
+  metadata:
+    auto_detection: true
+    directories:
+      AppInfrastructureVO:
+        namespace_prefix: "App\\Domain\\VO"
+        path: "%kernel.project_dir%/config/infrastructure/serializer"

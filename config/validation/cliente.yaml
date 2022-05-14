@@ -1,0 +1,16 @@
+App\VO\ClienteVO:
+  properties:
+    nome:
+      - NotBlank: ~
+      - NotNull: ~
+      - Type: string
+    email:
+      - NotBlank: { message: 'Este campo não pode ser vazio' }
+      - NotNull: ~
+      - Email: { message: 'Email não válido' }
+      - App\Validator\Constraint\Email\ConstraintEmailExistente: ~
+      - Type: string
+    telefone:
+      - NotBlank: { message: 'Este campo não pode ser vazio' }
+      - App\Validator\Constraint\Telefone\ConstraintTelefoneExistente: ~
+      - Type: string

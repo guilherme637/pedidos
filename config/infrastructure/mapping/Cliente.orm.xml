@@ -1,0 +1,16 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Domain\Entity\Cliente" table="cliente" repository-class="App\Repository\ClienteRepository">
+        <id name="id" type="integer">
+            <generator strategy="IDENTITY"/>
+        </id>
+
+        <field name="nome" type="string" length="120"/>
+        <field name="email" type="string" column="email" length="50" unique="true"/>
+        <field name="telefone" type="string" column="telefone" length="12" unique="true"/>
+
+        <one-to-one field="endereco" target-entity="App\Domain\Entity\Endereco"/>
+        <one-to-one field="pedido" target-entity="App\Domain\Entity\Pedido" inversed-by="cliente">
+            <join-column name="pedido_id" referenced-column-name="id"/>
+        </one-to-one>
+    </entity>
+</doctrine-mapping>

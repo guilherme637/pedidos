@@ -1,0 +1,13 @@
+App\VO\EnderecoVO:
+  exclusion_policy: ALL
+    properties:
+      id:
+        type: integer
+      rua:
+        type: string
+      numero:
+        type: integer
+      cep:
+        type: integer
+      cliente:
+        type: App\VO\ClienteVO
