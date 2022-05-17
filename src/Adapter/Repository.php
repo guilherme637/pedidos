@@ -3,6 +3,7 @@
 namespace App\Adapter;
 
 use App\Domain\Adapter\RepositoryInterface;
+use App\Domain\Entity\Usuario;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
@@ -32,5 +33,15 @@ abstract class Repository extends EntityRepository implements RepositoryInterfac
     public function getfindOneBy(array $criteria, ?array $orderBy = null)
     {
         return $this->findOneBy($criteria, $orderBy);
+    }
+
+    public function getEM(): EntityManagerInterface
+    {
+        return $this->_em;
+    }
+
+    public function getUsuario(int $usuarioId): Usuario
+    {
+        return $this->getEM()->getRepository(Usuario::class)->find($usuarioId);
     }
 }

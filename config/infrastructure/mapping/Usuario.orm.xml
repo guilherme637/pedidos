@@ -1,0 +1,25 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Domain\Entity\Usuario" repository-class="App\Repository\UsuarioRepository">
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+            <sequence-generator sequence-name="tablename_seq" allocation-size="100" initial-value="1" />
+        </id>
+
+        <field name="nome" type="string" length="120"/>
+        <field name="email" type="string" column="email" length="180" unique="true"/>
+        <field name="telefone" type="string" column="telefone" length="12" unique="true"/>
+        <field name="role" type="json"/>
+        <field name="isAtivo" type="boolean"/>
+        <field name="password" type="string"/>
+
+        <one-to-one field="endereco" target-entity="App\Domain\Entity\Endereco">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-one>
+        <one-to-one field="pedido" target-entity="App\Domain\Entity\Pedido" inversed-by="usuario">
+            <join-column name="pedido_id" referenced-column-name="id"/>
+        </one-to-one>
+    </entity>
+</doctrine-mapping>

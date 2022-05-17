@@ -2,22 +2,22 @@
 
 namespace App\Validator;
 
-use App\Repository\ClienteRepository;
+use App\Repository\UsuarioRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 class TelefoneExistenteValidator extends ConstraintValidator
 {
-    private ClienteRepository $clienteRepository;
+    private UsuarioRepository $usuarioRepository;
 
-    public function __construct(ClienteRepository $clienteRepository)
+    public function __construct(UsuarioRepository $usuarioRepository)
     {
-        $this->clienteRepository = $clienteRepository;
+        $this->usuarioRepository = $usuarioRepository;
     }
 
     public function validate($value, Constraint $constraint)
     {
-        if ($this->clienteRepository->existeTelefoneCadastrado($value)) {
+        if ($this->usuarioRepository->existeTelefoneCadastrado($value)) {
             $this->context->buildViolation($constraint->message)->addViolation();
         }
     }

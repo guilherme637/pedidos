@@ -1,4 +1,4 @@
-App\VO\ClienteVO:
+App\VO\UsuarioVO:
   properties:
     nome:
       - NotBlank: ~
@@ -13,4 +13,12 @@ App\VO\ClienteVO:
     telefone:
       - NotBlank: { message: 'Este campo não pode ser vazio' }
       - App\Validator\Constraint\Telefone\ConstraintTelefoneExistente: ~
+      - Type: string
+    endereco:
+      - NotBlank: { message: 'Informe o endereço' }
+      - NotNull: ~
+      - Type: App\VO\EnderecoVO
+    password:
+      - NotBlank: { message: 'Password é obrigatório' }
+      - NotNull: ~
       - Type: string

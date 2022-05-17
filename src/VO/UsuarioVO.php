@@ -3,12 +3,15 @@
 namespace App\VO;
 
 
-class ClienteVO
+class UsuarioVO
 {
     public function __construct(
         private ?int $id,
         private string $nome,
         private string $email,
+        private string $password,
+        private string $role,
+        private bool $isAtivo,
         private string $telefone,
         private ?EnderecoVO $endereco,
         private ?PedidoVO $pedido
@@ -42,5 +45,20 @@ class ClienteVO
     public function getPedido(): PedidoVO
     {
         return $this->pedido;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    public function isAtivo(): bool
+    {
+        return $this->isAtivo;
     }
 }

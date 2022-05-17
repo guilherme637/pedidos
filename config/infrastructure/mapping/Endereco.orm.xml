@@ -8,8 +8,8 @@
         <field name="numero" type="string" length="5"/>
         <field name="rua" type="string" length="180"/>
 
-        <one-to-one field="cliente" target-entity="App\Domain\Entity\Cliente">
-            <join-column name="cliente_id" referenced-column-name="id"/>
+        <one-to-one field="usuario" target-entity="App\Domain\Entity\Usuario">
+            <join-column name="usuario_id" referenced-column-name="id"/>
         </one-to-one>
     </entity>
 </doctrine-mapping>

@@ -3,8 +3,8 @@ App\VO\PedidoVO:
     properties:
       id:
         type: integer
-      cliente:
-        type: App\VO\ClienteVO
+      usuario:
+        type: integer
       dataCriacao:
         type: string
       statusCriacao:

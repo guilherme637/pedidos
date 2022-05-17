@@ -2,6 +2,9 @@
 
 namespace App\Domain\Adapter;
 
+use App\Domain\Entity\Usuario;
+use Doctrine\ORM\EntityManagerInterface;
+
 interface RepositoryInterface
 {
     /**
@@ -23,4 +26,8 @@ interface RepositoryInterface
      * @return object|null
      */
     public function getfindOneBy(array $criteria, ?array $orderBy = null);
+
+    public function getEM(): EntityManagerInterface;
+
+    public function getUsuario(int $usuarioId): Usuario;
 }

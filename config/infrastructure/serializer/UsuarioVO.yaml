@@ -1,4 +1,4 @@
-App\VO\ClienteVO:
+App\VO\UsuarioVO:
   exclusion_policy: ALL
     properties:
       id:
@@ -6,6 +6,10 @@ App\VO\ClienteVO:
       nome:
         type: string
       email:
+        type: string
+      password:
+        type: string
+      role:
         type: string
       telefone:
         type: string

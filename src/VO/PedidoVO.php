@@ -8,7 +8,7 @@ class PedidoVO
 {
     public function __construct(
         private ?int $id,
-        private ClienteVO $cliente,
+        private int $usuario,
         private \DateTime $dataCriacao,
         private string $statusPedido,
         private ArrayCollection $produtos
@@ -19,9 +19,9 @@ class PedidoVO
         return $this->id;
     }
 
-    public function getCliente(): ClienteVO
+    public function getUsuario(): int
     {
-        return $this->cliente;
+        return $this->usuario;
     }
 
     public function getDataCriacao(): \DateTime

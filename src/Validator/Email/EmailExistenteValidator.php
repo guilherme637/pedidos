@@ -2,7 +2,7 @@
 
 namespace App\Validator\Email;
 
-use App\Repository\ClienteRepository;
+use App\Repository\UsuarioRepository;
 use App\Validator\Constraint\Email\ConstraintEmailExistente;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -10,11 +10,11 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class EmailExistenteValidator extends ConstraintValidator
 {
-    public ClienteRepository $clienteRepository;
+    public UsuarioRepository $usuarioRepository;
 
-    public function __construct(ClienteRepository $clienteRepository)
+    public function __construct(UsuarioRepository $usuarioRepository)
     {
-        $this->clienteRepository = $clienteRepository;
+        $this->usuarioRepository = $usuarioRepository;
     }
 
     public function validate($value, Constraint $constraint)
@@ -23,7 +23,7 @@ class EmailExistenteValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, ConstraintEmailExistente::class);
         }
 
-        if (!is_null($this->clienteRepository->existeEmailCadastrado($value))) {
+        if (!is_null($this->usuarioRepository->existeEmailCadastrado($value))) {
             $this->context->buildViolation($constraint->message)->addViolation();
         }
     }

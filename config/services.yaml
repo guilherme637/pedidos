@@ -21,7 +21,7 @@ services:
             - '../src/Kernel.php'
 
     App\Validator\Email\EmailExistenteValidator:
-        arguments: [ '@App\Repository\ClienteRepository' ]
+        arguments: [ '@App\Repository\UsuarioRepository' ]
 
     App\Controller\:
         resource: '../src/Controller/'

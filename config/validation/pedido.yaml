@@ -1,9 +1,9 @@
 App\VO\PedidoVO:
   properties:
-    cliente:
+    usuario:
       - NotNull: ~
       - NotBlank: ~
-      - Type: App\VO\ClienteVO
+      - Type: integer
     statusPedido:
       - NotNull: ~
       - NotBlank: ~

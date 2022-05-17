@@ -2,7 +2,7 @@
 
 namespace App\VO;
 
-use App\Domain\Entity\Cliente;
+use App\Domain\Entity\Usuario;
 
 class EnderecoVO
 {
@@ -11,7 +11,7 @@ class EnderecoVO
         private string $rua,
         private int $numero,
         private int $cep,
-        private Cliente $cliente
+        private UsuarioVO $usuarioVO
     ) {}
 
     public function getId(): ?int
@@ -34,8 +34,8 @@ class EnderecoVO
         return $this->cep;
     }
 
-    public function getCliente(): Cliente
+    public function getUsuario(): UsuarioVO
     {
-        return $this->cliente;
+        return $this->$usuarioVO;
     }
 }

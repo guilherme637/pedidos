@@ -9,7 +9,7 @@ class Pedido
 {
     private ?int $id;
 
-    private Cliente $cliente;
+    private Usuario $usuario;
 
     private \DateTime $dataCriacao;
 
@@ -34,14 +34,14 @@ class Pedido
         return $this;
     }
 
-    public function getCliente(): Cliente
+    public function getUsuario(): Usuario
     {
-        return $this->cliente;
+        return $this->usuario;
     }
 
-    public function setCliente(Cliente $cliente): self
+    public function setUsuario(Usuario $usuario): self
     {
-        $this->cliente = $cliente;
+        $this->usuario = $usuario;
 
         return $this;
     }
@@ -68,7 +68,7 @@ class Pedido
         return $this;
     }
 
-    public function getProdutos(): ArrayCollection
+    public function getProdutos(): Collection
     {
         return $this->produtos;
     }

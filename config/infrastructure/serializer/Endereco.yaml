@@ -9,5 +9,5 @@ App\VO\EnderecoVO:
         type: integer
       cep:
         type: integer
-      cliente:
-        type: App\VO\ClienteVO
+      usuario:
+        type: App\VO\UsuarioVO

@@ -12,7 +12,7 @@ class Endereco
 
     private int $cep;
 
-    private Cliente $cliente;
+    private Usuario $usuario;
 
 
     public function getId(): ?int
@@ -56,13 +56,15 @@ class Endereco
         return $this;
     }
 
-    public function getCliente(): Cliente
+    public function getUsuario(): Usuario
     {
-        return $this->cliente;
+        return $this->usuario;
     }
 
-    public function setCliente(Cliente $cliente): void
+    public function setUsuario(Usuario $usuario): self
     {
-        $this->cliente = $cliente;
+        $this->usuario = $usuario;
+
+        return $this;
     }
 }
