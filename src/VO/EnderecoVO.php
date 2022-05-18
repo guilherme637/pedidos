@@ -2,8 +2,6 @@
 
 namespace App\VO;
 
-use App\Domain\Entity\Usuario;
-
 class EnderecoVO
 {
     public function __construct(

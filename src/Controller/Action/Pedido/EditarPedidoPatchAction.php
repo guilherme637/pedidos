@@ -3,13 +3,14 @@
 namespace App\Controller\Action\Pedido;
 
 use App\Build\Pedido\PedidoBuilder;
-use App\Domain\Adapter\SerializerInterface;
-use App\Domain\Adapter\ValidatorInterface;
 use App\Service\PedidoService;
-use App\VO\PedidoVO;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\VO\PedidoVO;
+use App\Domain\Adapter\{SerializerInterface, ValidatorInterface};
+use Symfony\Component\HttpFoundation\{JsonResponse,
+    Request,
+    Response
+};
 
 class EditarPedidoPatchAction
 {
@@ -36,6 +37,6 @@ class EditarPedidoPatchAction
 
         $this->pedidoService->editarPedido($pedidoVO, new PedidoBuilder());
 
-        return new JsonResponse('Ok', 200);
+        return new JsonResponse(['mensagem' => 'ok'], Response::HTTP_OK);
     }
 }

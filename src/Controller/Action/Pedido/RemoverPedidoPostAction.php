@@ -5,6 +5,7 @@ namespace App\Controller\Action\Pedido;
 use App\Repository\PedidoRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class RemoverPedidoPostAction
@@ -24,6 +25,6 @@ class RemoverPedidoPostAction
         $this->pedidoRepository->getEM()->remove($pedido);
         $this->pedidoRepository->getEM()->flush();
 
-        return new JsonResponse('Ok', 404);
+        return new JsonResponse([], Response::HTTP_NOT_FOUND);
     }
 }

@@ -10,6 +10,9 @@ RUN docker-php-ext-install gd
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install mysqli pdo pdo_mysql pdo_pgsql pdo_sqlite
 
+USER root
+
+RUN chown -R $(whoami) $(pwd)
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 

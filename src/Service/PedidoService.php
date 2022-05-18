@@ -27,8 +27,10 @@ class PedidoService
         $this->produtoRepository = $produtoRepository;
     }
 
-    public function criarPedido(PedidoVO $pedidoVO, Usuario $usuario, PedidoBuildInterface $pedidoBuild)
+    public function criarPedido(PedidoVO $pedidoVO, PedidoBuildInterface $pedidoBuild)
     {
+        $usuario = $this->pedidoRepository->getUsuario($pedidoVO->getUsuario());
+
         $pedido = $pedidoBuild
             ->setPedidoVO($pedidoVO)
             ->setUsuario($usuario)
