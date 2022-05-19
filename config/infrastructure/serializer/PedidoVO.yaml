@@ -1,4 +1,4 @@
-App\VO\PedidoVO:
+App\Domain\VO\PedidoVO:
   exclusion_policy: ALL
     properties:
       id:
@@ -10,4 +10,4 @@ App\VO\PedidoVO:
       statusCriacao:
         type: string
       produtos:
-        type: App\VO\ProdutoVO
+        type: Doctrine\Common\Collections\ArrayCollection

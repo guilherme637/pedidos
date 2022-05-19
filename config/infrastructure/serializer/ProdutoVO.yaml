@@ -1,4 +1,4 @@
-App\VO\ProdutoVO:
+App\Domain\VO\ProdutoVO:
   exclusion_policy: ALL
     properties:
       id:
@@ -8,4 +8,4 @@ App\VO\ProdutoVO:
       preco:
         type: float
       pedido:
-        type: App\VO\Pedido
+        type: App\Domain\VO\Pedido

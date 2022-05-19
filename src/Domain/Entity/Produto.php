@@ -17,11 +17,9 @@ class Produto
         return $this->id;
     }
 
-    public function setId(?int $id): self
+    public function setId(?int $id): void
     {
         $this->id = $id;
-
-        return $this;
     }
 
     public function getNome(): string
@@ -29,11 +27,9 @@ class Produto
         return $this->nome;
     }
 
-    public function setNome(string $nome): self
+    public function setNome(string $nome): void
     {
         $this->nome = $nome;
-
-        return $this;
     }
 
     public function getPreco(): float
@@ -41,11 +37,9 @@ class Produto
         return $this->preco;
     }
 
-    public function setPreco(float $preco): self
+    public function setPreco(float $preco): void
     {
         $this->preco = $preco;
-
-        return $this;
     }
 
     public function getPedido(): Pedido
@@ -53,10 +47,8 @@ class Produto
         return $this->pedido;
     }
 
-    public function setPedido(Pedido $pedido): self
+    public function setPedido(Pedido $pedido): void
     {
         $this->pedido = $pedido;
-
-        return $this;
     }
 }

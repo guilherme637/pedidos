@@ -2,10 +2,10 @@
 
 namespace App\Domain\Adapter;
 
-use App\Exception\ValidatorException;
+use App\Infrastructure\Exception\ValidatorException;
 
 interface ValidatorInterface
 {
-    /** @throws ValidatorException */
+    /** @throws \App\Infrastructure\Exception\ValidatorException */
     public function validate($value);
 }

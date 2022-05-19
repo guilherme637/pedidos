@@ -35,11 +35,9 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->nome;
     }
 
-    public function setNome(string $nome): self
+    public function setNome(string $nome): void
     {
         $this->nome = $nome;
-
-        return $this;
     }
 
     public function getEmail(): string
@@ -47,11 +45,9 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     public function getTelefone(): string
@@ -59,11 +55,9 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->telefone;
     }
 
-    public function setTelefone(string $telefone): self
+    public function setTelefone(string $telefone): void
     {
         $this->telefone = $telefone;
-
-        return $this;
     }
 
     public function getEndereco(): Endereco
@@ -71,11 +65,9 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->endereco;
     }
 
-    public function setEndereco(Endereco $endereco): self
+    public function setEndereco(Endereco $endereco): void
     {
         $this->endereco = $endereco;
-
-        return $this;
     }
 
     public function getPedido(): ?Pedido
@@ -83,11 +75,9 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->pedido;
     }
 
-    public function setPedido(?Pedido $pedido): self
+    public function setPedido(?Pedido $pedido): void
     {
         $this->pedido = $pedido;
-
-        return $this;
     }
 
     public function getRoles(): array
@@ -98,18 +88,14 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($this->role);
     }
 
-    public function setRole(string $role): self
+    public function setRole(string $role): void
     {
         $this->role[] = $role;
-
-        return $this;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $password): void
     {
         $this->password = password_hash($password, PASSWORD_BCRYPT);
-
-        return $this;
     }
 
     public function getPassword(): ?string
@@ -137,10 +123,8 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->isAtivo;
     }
 
-    public function setIsAtivo(bool $isAtivo): self
+    public function setIsAtivo(bool $isAtivo): void
     {
         $this->isAtivo = $isAtivo;
-
-        return $this;
     }
 }

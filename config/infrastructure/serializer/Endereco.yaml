@@ -1,4 +1,4 @@
-App\VO\EnderecoVO:
+App\Domain\VO\EnderecoVO:
   exclusion_policy: ALL
     properties:
       id:

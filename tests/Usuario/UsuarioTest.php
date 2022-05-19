@@ -2,10 +2,11 @@
 
 namespace App\Tests\Usuario;
 
-use App\Build\UsuarioBuilder;
-use App\Exception\ValidatorException;
-use App\Service\UsuarioService;
-use App\VO\UsuarioVO;
+use App\Domain\VO\UsuarioVO;
+use App\Infrastructure\Build\Director\UsuarioDirector;
+use App\Infrastructure\Build\Usuario\UsuarioBuilder;
+use App\Infrastructure\Exception\ValidatorException;
+use App\Infrastructure\Service\UsuarioService;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -31,12 +32,9 @@ class UsuarioTest extends WebTestCase
             ->getMock()
         ;
 
-        $usuario = $usuarioBuild
-            ->setUsuarioVO($usuarioVO)
-            ->getUsuario()
-            ->addEndereco()
-            ->build()
-        ;
+        $usuarioDirector = new UsuarioDirector();
+
+        $usuario = $usuarioDirector->build($usuarioVO);
 
         $em->expects($this->once())
             ->method('persist')
@@ -50,12 +48,12 @@ class UsuarioTest extends WebTestCase
         $em->flush();
     }
 
-    /** @dataProvider getMockJson */
+    /** @dataProvider getMockJsonEmailCadastrado */
     public function testEmailCadastrado(string $request)
     {
-        $validator = self::getContainer()->get('App\Adapter\Validator');
+        $validator = self::getContainer()->get('App\Infrastructure\Adapter\Validator');
 
-        $serializer = self::getContainer()->get('App\Adapter\Serializer');
+        $serializer = self::getContainer()->get('App\Infrastructure\Adapter\Serializer');
 
         $usuarioVO = $serializer->deserialize($request, UsuarioVO::class, 'json');
 

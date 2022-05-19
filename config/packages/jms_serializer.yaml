@@ -17,6 +17,6 @@ jms_serializer:
   metadata:
     auto_detection: true
     directories:
-      AppInfrastructureVO:
-        namespace_prefix: "App\\Domain\\VO"
+      AppDomainVO:
+        namespace_prefix: "App\\VO\\"
         path: "%kernel.project_dir%/config/infrastructure/serializer"

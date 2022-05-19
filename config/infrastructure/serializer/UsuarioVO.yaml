@@ -1,4 +1,4 @@
-App\VO\UsuarioVO:
+App\Domain\VO\UsuarioVO:
   exclusion_policy: ALL
     properties:
       id:
@@ -15,5 +15,3 @@ App\VO\UsuarioVO:
         type: string
       endereco:
         type: App\VO\EnderecoVO
-      pedido:
-        type: App\VO\PedidoVO

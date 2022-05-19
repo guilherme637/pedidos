@@ -1,4 +1,4 @@
-App\VO\PedidoVO:
+App\Domain\VO\PedidoVO:
   properties:
     usuario:
       - NotNull: ~

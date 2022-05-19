@@ -4,8 +4,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-    usuario_service: 'App\Service\UsuarioService'
-    validator_adapter: 'App\Adapter\Validator'
+    usuario_service: 'App\Infrastructure\Service\UsuarioService'
+    validator_adapter: 'App\Infrastructure\Adapter\Validator'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -21,11 +21,11 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    App\Validator\Email\EmailExistenteValidator:
-        arguments: [ '@App\Repository\UsuarioRepository' ]
+    App\Infrastructure\Validator\Email\EmailExistenteValidator:
+        arguments: [ '@App\Infrastructure\Repository\UsuarioRepository' ]
 
-    App\Controller\:
-        resource: '../src/Controller/'
+    App\Infrastructure\Controller\:
+        resource: '../src/Infrastructure/Controller/'
         tags: [ 'controller.service_arguments' ]
 
 
