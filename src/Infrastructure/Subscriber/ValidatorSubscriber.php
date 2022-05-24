@@ -1,10 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Infrastructure\Subscriber;
 
 use App\Infrastructure\Exception\ValidatorException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 
 class ValidatorSubscriber implements EventSubscriberInterface
@@ -21,7 +22,7 @@ class ValidatorSubscriber implements EventSubscriberInterface
         $exception = $event->getThrowable();
 
         if ($exception instanceof ValidatorException) {
-            $response = new JsonResponse($exception->getMessage(), 400);
+            $response = new JsonResponse($exception->getMessage(), Response::HTTP_BAD_REQUEST);
             $event->setResponse($response);
         }
     }

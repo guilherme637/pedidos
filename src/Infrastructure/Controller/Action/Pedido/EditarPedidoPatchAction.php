@@ -2,9 +2,9 @@
 
 namespace App\Infrastructure\Controller\Action\Pedido;
 
+use App\Infrastructure\PedidoConverter;
 use App\Domain\Adapter\{SerializerInterface, ValidatorInterface};
 use App\Domain\VO\PedidoVO;
-use App\Infrastructure\Build\Pedido\PedidoBuilder;
 use App\Infrastructure\Service\PedidoService;
 use Symfony\Component\HttpFoundation\{JsonResponse, Request, Response};
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,15 +25,14 @@ class EditarPedidoPatchAction
         $this->pedidoService = $pedidoService;
     }
 
-    #[Route('/pedido/editar/{id}')]
+    #[Route('/pedido/editar')]
     public function __invoke(Request $request): JsonResponse
     {
-        /** @var \App\Domain\VO\PedidoVO $pedidoVO */
+        /** @var PedidoVO $pedidoVO */
         $pedidoVO = $this->serializer->deserialize($request->getContent(), PedidoVO::class, 'json');
-        dd($pedidoVO);
         $this->validator->validate($pedidoVO);
 
-        $this->pedidoService->editarPedido($pedidoVO, new PedidoBuilder());
+        $this->pedidoService->editarPedido($pedidoVO, new PedidoConverter());
 
         return new JsonResponse(['mensagem' => 'ok'], Response::HTTP_OK);
     }

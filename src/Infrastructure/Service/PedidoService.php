@@ -3,10 +3,10 @@
 namespace App\Infrastructure\Service;
 
 use App\Domain\Adapter\PersistenceInterface;
-use App\Domain\Build\Pedido\PedidoBuildInterface;
 use App\Domain\Entity\Pedido;
 use App\Domain\VO\PedidoVO;
 use App\Infrastructure\Build\Director\PedidoDirector;
+use App\Infrastructure\PedidoConverter;
 use App\Infrastructure\Repository\PedidoRepository;
 use App\Infrastructure\Repository\ProdutoRepository;
 
@@ -26,7 +26,7 @@ class PedidoService
         $this->produtoRepository = $produtoRepository;
     }
 
-    public function create(PedidoVO $pedidoVO)
+    public function create(PedidoVO $pedidoVO): void
     {
         $usuario = $this->pedidoRepository->getUsuario($pedidoVO->getUsuario());
 
@@ -38,29 +38,14 @@ class PedidoService
         $this->persistence->flush();
     }
 
-    public function editarPedido(PedidoVO $pedidoVO, PedidoBuildInterface $pedidoBuild)
-    {
+    public function editarPedido(
+        PedidoVO $pedidoVO,
+        PedidoConverter $pedidoConverter
+    ): void {
         /** @var Pedido $pedidoBanco */
         $pedidoBanco = $this->pedidoRepository->findById($pedidoVO->getId());
 
-        $pedido = $pedidoBuild
-            ->setPedidoVO($pedidoVO, $pedidoBanco)
-            ->getPedido()
-            ->build()
-        ;
-
-
-        $pedidoVO->getProdutos()->forAll(function (int $indexVO, array $produtoVO) use ($pedido) {
-            $produto = $this->produtoRepository->findById($produtoVO['id']);
-
-             $produtoPatch = $produto
-                ->setNome($produtoVO['nome'])
-                ->setPreco($produtoVO['preco'])
-             ;
-
-             $pedido->getProdutos()->add($produtoPatch);
-             return $produtoPatch;
-        });
+        $pedidoConverter->convertePedidoUnionPedidoVO($pedidoBanco, $pedidoVO, $this->produtoRepository);
 
         $this->persistence->flush();
     }

@@ -27,11 +27,9 @@ class Pedido
         return $this->id;
     }
 
-    public function setId(?int $id): self
+    public function setId(?int $id): void
     {
         $this->id = $id;
-
-        return $this;
     }
 
     public function getUsuario(): Usuario
@@ -39,11 +37,9 @@ class Pedido
         return $this->usuario;
     }
 
-    public function setUsuario(Usuario $usuario): self
+    public function setUsuario(Usuario $usuario): void
     {
         $this->usuario = $usuario;
-
-        return $this;
     }
 
     public function getDataCriacao(): \DateTime
@@ -61,11 +57,9 @@ class Pedido
         return $this->statusPedido;
     }
 
-    public function setStatusPedido(string $statusPedido): self
+    public function setStatusPedido(string $statusPedido): void
     {
         $this->statusPedido = $statusPedido;
-
-        return $this;
     }
 
     public function getProdutos(): Collection
@@ -73,10 +67,8 @@ class Pedido
         return $this->produtos;
     }
 
-    public function setProdutos(Produto $produtos): self
+    public function setProdutos(Produto $produtos): void
     {
         $this->produtos->add($produtos);
-
-        return $this;
     }
 }
