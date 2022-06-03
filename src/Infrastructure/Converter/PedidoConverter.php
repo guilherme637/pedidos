@@ -5,6 +5,7 @@ namespace App\Infrastructure;
 use App\Domain\Entity\Pedido;
 use App\Domain\VO\PedidoVO;
 use App\Infrastructure\Repository\ProdutoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class PedidoConverter
 {
@@ -26,5 +27,25 @@ class PedidoConverter
         });
 
         return $pedido;
+    }
+
+    public function convertePedidoArrayToPedidoVO(array $pedidos): ArrayCollection
+    {
+        $arrayCollection = new ArrayCollection();
+
+        /** @var Pedido $pedido */
+        foreach ($pedidos as $pedido) {
+            $pedidoVO = new PedidoVO(
+                $pedido->getId(),
+                $pedido->getUsuario()->getId(),
+                $pedido->getDataCriacao(),
+                $pedido->getStatusPedido(),
+                $pedido->getProdutos()
+            );
+
+            $arrayCollection->add($pedidoVO);
+        }
+
+        return $arrayCollection;
     }
 }
